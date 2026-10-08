@@ -52,3 +52,17 @@ test('NHTSA outage gives a clear error, not a crash', async () => {
     await api.close();
   }
 });
+
+test('serves the web app and keeps API 404s as JSON', async () => {
+  const api = await startServer();
+  try {
+    const res = await fetch(`${api.base}/`);
+    assert.equal(res.status, 200);
+    assert.match(await res.text(), /<main id="app"/);
+    const missing = await api.get('/api/nope');
+    assert.equal(missing.status, 404);
+    assert.equal(missing.body.error, 'Not found');
+  } finally {
+    await api.close();
+  }
+});

@@ -21,12 +21,26 @@ Requires Node.js 22.13 or newer.
 
 ```bash
 npm install
-npm start        # http://localhost:3000
+npm start        # open http://localhost:3000 in a browser
 npm run dev      # restarts automatically when you edit code
 npm test
 ```
 
 Environment variables (all optional): `PORT` (default 3000), `DB_PATH` (default `data/shop.db`).
+
+## The web app
+
+Open `http://localhost:3000` to use the shop screens. They're plain HTML, CSS and JavaScript in
+`public/`, so there's no build step. The screens work on a desktop, a tablet or a phone, and
+follow the device's light or dark mode.
+
+- **Jobs:** a board of open work orders by status, plus the total owed on unpaid invoices.
+- **Customers:** search, add and edit. Each customer page lists their vehicles.
+- **Vehicle:** VIN lookup when adding, a one-click NHTSA recall check, and service history.
+- **Work order:** concern, diagnosis, trouble codes with meanings, labor/parts/fee lines, live totals, status.
+- **Invoices:** a printable invoice (press Print for a clean page), partial payments, balance due.
+- **Codes:** look up any trouble code or search by keyword.
+- **Settings:** shop name and address for invoices, labor rate, sales tax.
 
 ## How a job flows
 
@@ -82,5 +96,4 @@ curl localhost:3000/api/codes/P0420
 
 - **Logins / multiple shops.** Right now one running copy serves one shop, with no login.
   Add authentication before putting this on the public internet.
-- A front end (web or mobile app).
 - Texting or emailing customers, appointments, inventory.

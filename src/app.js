@@ -1,4 +1,5 @@
 import express from 'express';
+import { fileURLToPath } from 'node:url';
 import { HttpError } from './errors.js';
 import settingsRouter from './routes/settings.js';
 import customersRouter from './routes/customers.js';
@@ -10,6 +11,7 @@ import lookupRouter from './routes/lookup.js';
 export function createApp(db) {
   const app = express();
   app.use(express.json());
+  app.use(express.static(fileURLToPath(new URL('../public', import.meta.url))));
 
   app.get('/health', (req, res) => res.json({ ok: true }));
   app.use('/api/settings', settingsRouter(db));
