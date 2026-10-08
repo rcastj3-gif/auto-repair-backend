@@ -51,7 +51,7 @@ All money is in **cents** (`15000` = $150.00).
 | GET / POST | `/api/vehicles` | List (`?vin=`, `?customer_id=`) / create (auto-decodes the VIN) |
 | GET / PATCH / DELETE | `/api/vehicles/:id` | GET includes owner and work order history |
 | GET | `/api/vehicles/:id/recalls` | Open NHTSA safety recalls for this vehicle |
-| GET / POST | `/api/work-orders` | List (`?status=open,in_progress`, `?vehicle_id=`) / create |
+| GET / POST | `/api/work-orders` | List (`?status=approved,in_progress`, `?vehicle_id=`) / create |
 | GET / PATCH / DELETE | `/api/work-orders/:id` | GET includes vehicle, customer, items, codes and totals |
 | POST | `/api/work-orders/:id/items` | Add a labor, part or fee line |
 | PATCH / DELETE | `/api/work-orders/:id/items/:itemId` | Edit or remove a line |
